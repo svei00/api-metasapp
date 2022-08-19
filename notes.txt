@@ -1,0 +1,9 @@
+// Install nodemon to restar the app every time it detects a change
+npm i nodemon -D            // Remember to write -D because it is for developt no for final user version
+
+// Change the line in package.json
+"start": "node ./bin/www" for "start": "nodemon ./bin/www"
+
+// Git
+* Create file .gitignore
+* add fildeer /node_modules
