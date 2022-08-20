@@ -38,27 +38,51 @@ let goals = [
 
 /* GET Goals list. */
 router.get('/', function(req, res, next) {
-  // Was: res.send('Write something here!');
+  res.send(goals);                                          // Was: res.send('Write something here!');
 });
 
 /* GET Goal with id */
 router.get('/:id', function (req, res, next) {
-
+  const id = req.params.id;
+  const goal = goals.find(item => item.id === id);
+  if(!goal) {
+    return res.sendStatus(404);                             // With return we guarantee that if there's nothing it stops.
+  }
+  res.send(goal);
 });
  
 /* POST create a Goal*/
 router.post('/', function(req, res, next) {
-
+  const goal = req.body;
+  goals.push(goal);
+  res.status(201);
+  res.send(goal);
 });
 
 /* PUT update a goal */
 router.put('/:id', function(req, res, next) {
-
+  const goal = req.body;
+  const id = req.params.id;
+  if (goal.id !== id) {
+    return res.sendStatus(409);
+  }
+  const index = goals.findIndex(item => item.id === id);
+  if(index === -1) {
+    return res.sendStatus(404);
+  }
+  goals[index] = goal;
+  res.send(goal);
 });
 
 /* DELETE goal */
 router.delete('/:id', function(req, res, next) {
-
+  const id = req.params.id;
+  const index = goals.findIndex(item => item.id === id);
+  if(index === -1) {
+    return res.sendStatus(404);
+  }
+  goals.splice(index, 1);
+  res.sendStatus(204);
 });
 
 module.exports = router;

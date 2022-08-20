@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var metasRouter = require('./routes/metas');                  // Was 1: var usersRouter = require('./routes/users');
+var goalsRouter = require('./routes/goals');                  // Was 1: var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/api/metas', metasRouter);
+app.use('/api/goals', goalsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,6 +42,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  console.log(err);                                                       // Prints the error in the console, that way only the developer is able to read it.
   res.send('error');                                                      // Was: res.render('error');
 });
 

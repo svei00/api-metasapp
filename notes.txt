@@ -7,3 +7,5 @@ npm i nodemon -D            // Remember to write -D because it is for developt n
 // Git
 * Create file .gitignore
 * add fildeer /node_modules
+
+// Instal ThunderClient
