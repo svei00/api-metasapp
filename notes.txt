@@ -9,3 +9,12 @@ npm i nodemon -D            // Remember to write -D because it is for developt n
 * add fildeer /node_modules
 
 // Instal ThunderClient
+
+// Instal PG-promise (database)
+* npm i pg-promise
+
+// To start SQL Server with username and password use:
+* DEBUG=api-metas:* & DB_USER=postgres DB_PASSWORD=12345678 npm start
+
+// Install Express Validator
+* npm install --save express-validator
