@@ -77,7 +77,7 @@ router.post('/',
 
 // Express Validation
  body('details').isLength({ min: 5}),
- body('period').not().isEmpty(),
+ body('frequency').not().isEmpty(),
 
 // Continue with the function
 function(req, res, next) {
@@ -132,7 +132,7 @@ router.put('/:id',
 
   const body = req.body;
   const id = req.params.id;
-  if(body.id !== id) {
+  if(body.id != id) {            // Was: if(body.id !== id) but we fix like if(body.id !== id) or we can fix with if(body.id !== +id) (converting into a number)
     return res.sendStatus(409);
   }
 
