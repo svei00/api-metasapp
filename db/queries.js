@@ -23,6 +23,7 @@ function getItem(table, id, callback) {
 }
 
 // Create Goal INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
+// We use it to create a Goal and a User
 function create(table, item, callback) {
     const keys = Object.keys(item);
     const properties = keys.join(', ');
