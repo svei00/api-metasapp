@@ -22,6 +22,17 @@ function getItem(table, id, callback) {
     });
 }
 
+// Ask One Item SELECT * FROM table WHERE id = id
+function getUser(username, callback) {
+    db.any(`SELECT * FROM accounts WHERE username = '${username}'`)
+    .then(results => {
+        callback(null, results);
+    })
+    .catch(error => {
+        callback(error);
+    });
+}
+
 // Create Goal INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
 // We use it to create a Goal and a User
 function create(table, item, callback) {
@@ -69,5 +80,6 @@ module.exports = {
     getItem,
     create,
     update,
-    delGoal 
+    delGoal,
+    getUser 
 };
