@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(jwt({secret: "shhhhhhared-secret", algorithms: ["HS256"]}).unless({ path: ['/api/signup', '/api/login']}));
+app.use(jwt({secret: "secret", algorithms: ["HS256"]}).unless({ path: ['/api/signup', '/api/login']}));
 
 app.use('/', indexRouter);
 app.use('/api/goals', goalsRouter);

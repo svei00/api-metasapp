@@ -3,6 +3,7 @@ const { getAll, getItem, create, update, delGoal } = require('../db/queries');
 var router = express.Router();
 const { body, validationResult } = require('express-validator');
 
+/*
 let goals = [
     {
       "id": "1",
@@ -37,10 +38,11 @@ let goals = [
       "complete": 40
   }
 ];
+*/
 
 /* GET Goals list. */
 router.get('/', function(req, res, next) {
-  getAll('goals', (err, goals) => {                         // Was1: res.send('Write something here!'); Was2 before db: res.send(goals);
+  getAll('goals', req.auth.id, (err, goals) => {            // Was1: res.send('Write something here!'); Was2 before db: res.send(goals); Was3 Getting Username with token: getAll('goals', (err, goals) => {  
     if(err) {
       return next(err);                                     // Goes to the next middleware. You can watch it on app.js
     }

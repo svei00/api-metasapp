@@ -1,8 +1,8 @@
 const db = require('./config');
 
-// Select all the registers SELECT * FROM
-function getAll(table, callback) {
-    db.any(`SELECT * FROM ${table}`)
+// Select all the registers SELECT * FROM                           // Was: function getAll(table, callback) {
+function getAll(table, acc_id, callback) {
+    db.any(`SELECT * FROM ${table} WHERE acc_id = '${acc_id}'`)       // Was: db.any(`SELECT * FROM ${table}`)
     .then(result => {
         callback(null, result);
     })

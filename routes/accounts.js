@@ -68,9 +68,9 @@ function(req, res, next) {
           return res.sendStatus(401);                    
         }
         let token = jwt.sign({
-          exp: Math.floor(Date.now() / 1000) + 60,               // (60 * 60) One hour
-          username: login.username      
-        }, 'secret');                                                   // Never pass a password in your code, use enviroment variables
+          exp: Math.floor(Date.now() / 1000) + (60 * 60),                          // (60 * 60) One hour
+          id: account.id                                                    // Was: username: login.username      
+        }, 'secret');                                                       // Never pass a password in your code, use enviroment variables
         res.send({token: token});
       });
       
